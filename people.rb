@@ -41,9 +41,9 @@ class Person
                 # puts "Just an ingredient: #{ingredient}"
                 allergies.each do |allergen|
                     if ingredient == allergen
+                        @stomach = []
                         puts "AllergyError: #{ingredient}"
                         # need to empty stomach and break loops
-                        stomach = []
                         break
                     end
                 end
@@ -52,28 +52,30 @@ class Person
     end
 end
 
+## Tester text
 
-# lisa = Person.new("Lisa", ["eggplant"])
-kim = Person.new("Kim", ["gluten", "veal"])
-# # show name
-# puts lisa.name
-# # show allergies
-# puts lisa.allergies
-# # show stomach contents
-# puts lisa.stomach
+# # lisa = Person.new("Lisa", ["eggplant"])
+# kim = Person.new("Kim", ["gluten", "veal"])
+# # # show name
+# # puts lisa.name
+# # # show allergies
+# # puts lisa.allergies
+# # # show stomach contents
+# # puts lisa.stomach
 
-pizza = ["cheese", "gluten", "tomatoes"]
-pan_seared_scallops = ["scallops", "lemons", "pasta", "olive oil"]
-water = ["h", "h", "o"]
+# pizza = ["cheese", "gluten", "tomatoes"]
+# pan_seared_scallops = ["scallops", "lemons", "pasta", "olive oil"]
+# water = ["h", "h", "o"]
 
-# puts "Lisa eats stuff"
-# puts lisa.stomach
-# lisa.eat(water)
-# lisa.eat(pizza)
-# lisa.digest
-# puts lisa.stomach
+# # puts "Lisa eats stuff"
+# # puts lisa.stomach
+# # lisa.eat(water)
+# # lisa.eat(pizza)
+# # lisa.digest
+# # puts lisa.stomach
 
-kim.eat(pizza)
-puts "Kim digesting"
-kim.digest
-puts kim.stomach
+# puts "Kim eats pizza"
+# kim.eat(pizza)
+# puts "Kim digesting"
+# kim.digest
+# puts "Kim ate something allergic, how is her stomach? #{kim.stomach}"
