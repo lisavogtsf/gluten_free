@@ -5,7 +5,10 @@
 # * If a food array contains a known allergy reject the food. 
 # When a person attempts to eat a food they are allergic to, tell them `AllergyError`
 
-# new classes of people who share allergies?
+# pizza = ["cheese", "gluten", "tomatoes"]
+# pan_seared_scallops = ["scallops", "lemons", "pasta", "olive oil"]
+# water = ["h", "h", "o"]
+
 
 class Person
 
@@ -23,6 +26,9 @@ class Person
         # add arrays of food to stomach
         # food will remain in the stomach after it's eaten
         # unless there's an allergy
+        # food is the name of an array
+        stomach.push(food)
+        # self
     end
 
     def digest
@@ -33,6 +39,20 @@ end
 
 
 lisa = Person.new("Lisa", ["eggplant"])
-puts lisa
-puts lisa.name
-puts lisa.allergies
+# # show name
+# puts lisa.name
+# # show allergies
+# puts lisa.allergies
+# # show stomach contents
+# puts lisa.stomach
+
+pizza = ["cheese", "gluten", "tomatoes"]
+pan_seared_scallops = ["scallops", "lemons", "pasta", "olive oil"]
+water = ["h", "h", "o"]
+
+puts "Lisa eats almonds"
+lisa.eat(["almonds"])
+puts lisa.stomach
+lisa.eat(pizza)
+lisa.eat(water)
+puts lisa.stomach
