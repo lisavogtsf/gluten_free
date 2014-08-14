@@ -4,17 +4,13 @@
 # * Create a method that allows the person to eat and add arrays of ingredients to their stomachs
 # * If a food array contains a known allergy reject the food. 
 # When a person attempts to eat a food they are allergic to, tell them `AllergyError`
+# Bonus: When a person attempts to eat a food they are allergic to, ... remove ALL the food from the person's stomach before telling them AllergyError
 
-# pizza = ["cheese", "gluten", "tomatoes"]
-# pan_seared_scallops = ["scallops", "lemons", "pasta", "olive oil"]
-# water = ["h", "h", "o"]
-
+# Run at the command line, $ ruby people.rb name
 
 class Person
 
-    attr_accessor :stomach
-    attr_accessor :name
-    attr_accessor :allergies
+    attr_accessor :name, :allergies, :stomach
 
     def initialize(name, allergies)
         @name = name
@@ -22,13 +18,17 @@ class Person
         @stomach = []
     end
 
+    def diet
+        if @allergies.length == 0
+            puts "#{@name} eats everything"
+        else
+            puts "#{@name} is allergic to #{@allergies.join(" and ")}"
+        end
+    end
+
     def eat(food)
         # add arrays of food to stomach
-        # food will remain in the stomach after it's eaten
-        # unless there's an allergy
-        # food is the name of an array
         @stomach.push(food)
-        # self
     end
 
     def digest
@@ -53,19 +53,36 @@ class Person
 end
 
 ## Tester text
+## People
 
-# # lisa = Person.new("Lisa", ["eggplant"])
-# kim = Person.new("Kim", ["gluten", "veal"])
-# # # show name
-# # puts lisa.name
-# # # show allergies
-# # puts lisa.allergies
-# # # show stomach contents
-# # puts lisa.stomach
+# show name
+# #{lisa.allergies}"
+# show allergies
+# puts lisa.allergies
+# show stomach contents
+# puts lisa.stomach
 
-# pizza = ["cheese", "gluten", "tomatoes"]
-# pan_seared_scallops = ["scallops", "lemons", "pasta", "olive oil"]
-# water = ["h", "h", "o"]
+jane = Person.new("Jane", ["gluten", "lactose"])
+puts "#{jane.name} is allergic to #{jane.allergies.join(" and ")} intollerant"
+
+rachel = Person.new("Rachel", ["lactose"])
+puts "#{rachel.name} is allergic to #{rachel.allergies.join(" and ")}"
+
+pierre = Person.new("Pierre", ["scallops", "gluten"])
+puts "#{pierre.name} is allergic to #{pierre.allergies.join(" and ")}"
+
+lisa = Person.new("Lisa", [])
+lisa.diet
+
+
+## Foods
+pizza = ["cheese", "lactose", "crust", "gluten", "tomatoes"]
+pan_seared_scallops = ["scallops", "lemons", "olive oil"]
+caprese_salad = ["tomatoes", "olive oil", "cheese", "lactose"]
+scallops_and_spaghetti = ["scallops", "olive oil", "pasta", "gluten"]
+water = ["h", "h", "o"]
+
+
 
 # # puts "Lisa eats stuff"
 # # puts lisa.stomach
@@ -74,8 +91,7 @@ end
 # # lisa.digest
 # # puts lisa.stomach
 
-# puts "Kim eats pizza"
-# kim.eat(pizza)
-# puts "Kim digesting"
-# kim.digest
-# puts "Kim ate something allergic, how is her stomach? #{kim.stomach}"
+# puts "jane eats pizza"
+# jane.eat(pizza)
+# puts "jane digesting"
+# jane.digest
