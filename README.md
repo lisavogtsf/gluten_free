@@ -1,6 +1,6 @@
 #Lab - August 13, 2014
 
-###Prerequisites:
+###Prerequisites:  
 - Ruby
 - Hashes & Arrays
 - Objects & Classes
