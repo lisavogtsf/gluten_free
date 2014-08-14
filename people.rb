@@ -62,14 +62,12 @@ end
 # show stomach contents
 # puts lisa.stomach
 
-jane = Person.new("Jane", ["gluten", "lactose"])
-puts "#{jane.name} is allergic to #{jane.allergies.join(" and ")} intollerant"
-
+monica = Person.new("Monica", ["gluten", "lactose"])
 rachel = Person.new("Rachel", ["lactose"])
-puts "#{rachel.name} is allergic to #{rachel.allergies.join(" and ")}"
-
-pierre = Person.new("Pierre", ["scallops", "gluten"])
-puts "#{pierre.name} is allergic to #{pierre.allergies.join(" and ")}"
+ross = Person.new("Ross", ["scallops", "gluten"])
+joey = Person.new("Joey", [])
+chandler = Person.new("Chandler", ["scallops", "lactose", "tomatoes"])
+chandler.diet
 
 lisa = Person.new("Lisa", [])
 lisa.diet
