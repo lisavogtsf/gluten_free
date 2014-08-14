@@ -42,7 +42,8 @@ class Person
                 allergies.each do |allergen|
                     if ingredient == allergen
                         @stomach = []
-                        puts "AllergyError: #{ingredient}"
+                        puts "------Oh no! #{@name} puked!"
+                        puts "------AllergyError: #{ingredient}"
                         # need to empty stomach and break loops
                         break
                     end
@@ -54,42 +55,73 @@ end
 
 ## Tester text
 ## People
-
-# show name
-# #{lisa.allergies}"
-# show allergies
-# puts lisa.allergies
-# show stomach contents
-# puts lisa.stomach
-
+friends = []
 monica = Person.new("Monica", ["gluten", "lactose"])
+friends.push(monica)
 rachel = Person.new("Rachel", ["lactose"])
+friends.push(rachel)
 ross = Person.new("Ross", ["scallops", "gluten"])
+friends.push(ross)
 joey = Person.new("Joey", [])
+friends.push(joey)
 chandler = Person.new("Chandler", ["scallops", "lactose", "tomatoes"])
-chandler.diet
+friends.push(chandler)
 
-lisa = Person.new("Lisa", [])
-lisa.diet
-
+puts "Five friends are going out to dinner, but they have some dietary restrictions: "
+friends.each do |friend|
+    friend.diet
+end
+puts "----"
 
 ## Foods
+dishes = []
+dish_names = []
 pizza = ["cheese", "lactose", "crust", "gluten", "tomatoes"]
+dishes.push(pizza)
+dish_names.push("pizza")
+
 pan_seared_scallops = ["scallops", "lemons", "olive oil"]
+dishes.push(pan_seared_scallops)
+dish_names.push("pan_seared_scallops")
+
 caprese_salad = ["tomatoes", "olive oil", "cheese", "lactose"]
+dishes.push(caprese_salad)
+dish_names.push("caprese_salad")
+
 scallops_and_spaghetti = ["scallops", "olive oil", "pasta", "gluten"]
+dishes.push(scallops_and_spaghetti)
+dish_names.push("scallops_and_spaghetti")
+
 water = ["h", "h", "o"]
+dishes.push(water)
+dish_names.push("water")
 
+## Can't seem to print out the names of the dishes, just the ingredients?
+# possibly mixing up array and hash
+# puts "On the menu there are the following dishes: "
+# puts dishes.join(", ")
+# for num in (0..friends.length) do
+#     puts num
+#     puts dishes[num]
+# end
 
+# Focus person orders
+# ARGV want 0 - 4 or 0
+focus_num = ARGV[0].to_i % friends.length || 0
+focus_person = friends[focus_num]
+puts "#{focus_person.name} is ordering for everyone"
+# puts "#{focus_person.name} orders randomly, and "
+order = rand(10) % 5
+# puts order
+puts "#{focus_person.name} orders the #{dish_names[order]}"
+puts "----"
 
-# # puts "Lisa eats stuff"
-# # puts lisa.stomach
-# # lisa.eat(water)
-# # lisa.eat(pizza)
-# # lisa.digest
-# # puts lisa.stomach
+# person eats it, results
+puts "Everybody eats the dish. Results?"
 
-# puts "jane eats pizza"
-# jane.eat(pizza)
-# puts "jane digesting"
-# jane.digest
+friends.each do |friend|
+    puts "#{friend.name} eats the #{dish_names[order]}"
+    friend.eat(dishes[order])
+    friend.digest
+end
+
