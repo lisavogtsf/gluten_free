@@ -27,18 +27,34 @@ class Person
         # food will remain in the stomach after it's eaten
         # unless there's an allergy
         # food is the name of an array
-        stomach.push(food)
+        @stomach.push(food)
         # self
     end
 
     def digest
-        # a different method to test for allergies?
+        # #works on current contents of stomach
+        # puts "Digesting ..."
+        # puts self.stomach
+        stomach.each do |food|
+            # puts food
+            food.each do |ingredient|
+                # puts "Just an ingredient: #{ingredient}"
+                allergies.each do |allergen|
+                    if ingredient == allergen
+                        puts "AllergyError: #{ingredient}"
+                        # need to empty stomach and break loops
+                        stomach = []
+                        break
+                    end
+                end
+            end
+        end
     end
-
 end
 
 
-lisa = Person.new("Lisa", ["eggplant"])
+# lisa = Person.new("Lisa", ["eggplant"])
+kim = Person.new("Kim", ["gluten", "veal"])
 # # show name
 # puts lisa.name
 # # show allergies
@@ -50,9 +66,14 @@ pizza = ["cheese", "gluten", "tomatoes"]
 pan_seared_scallops = ["scallops", "lemons", "pasta", "olive oil"]
 water = ["h", "h", "o"]
 
-puts "Lisa eats almonds"
-lisa.eat(["almonds"])
-puts lisa.stomach
-lisa.eat(pizza)
-lisa.eat(water)
-puts lisa.stomach
+# puts "Lisa eats stuff"
+# puts lisa.stomach
+# lisa.eat(water)
+# lisa.eat(pizza)
+# lisa.digest
+# puts lisa.stomach
+
+kim.eat(pizza)
+puts "Kim digesting"
+kim.digest
+puts kim.stomach
